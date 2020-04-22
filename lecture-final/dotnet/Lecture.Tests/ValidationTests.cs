@@ -1,133 +1,123 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Lecture;
 
 namespace Lecture.Tests
 {
     [TestClass]
     public class ValidationTests
     {
-        private LectureExample exercises = new LectureExample();
+        private LectureProblem exercises = new LectureProblem();
 
         [TestMethod]
-        public void Test_01_ReturnNotOne()
+        public void Test_01a_ReturnNewArray()
         {
-            Assert.AreNotEqual(1, exercises.ReturnNotOne(), "Value returned shouldn't be one");
+            Assert.IsNotNull(exercises.ReturnNewArray(), "Are you returning null?");
+            Assert.AreEqual(typeof(int[]), exercises.ReturnNewArray().GetType(), "Did you make sure to return an array of integers?");
+        }
+
+        [TestMethod]
+        public void Test_01b_ReturnArrayOfKnownSize()
+        {
+            Assert.IsNotNull(exercises.ReturnArrayOfKnownSize(), "Are you returning null?");
+            Assert.AreEqual(typeof(int[]), exercises.ReturnArrayOfKnownSize().GetType(), "Did you make sure to return an array of integers?");
+            Assert.AreEqual(100, exercises.ReturnArrayOfKnownSize().Length, "Is your array size set to 100?");
+        }
+
+        [TestMethod]
+        public void Test_01c_ReturnArrayOfUnknownSize()
+        {
+            Assert.IsNotNull(exercises.ReturnArrayOfUnknownSize(10), "Are you returning null?");
+            Assert.AreEqual(typeof(string[]), exercises.ReturnArrayOfUnknownSize(10).GetType(), "Did you make sure to return an array of integers?");
+            Assert.AreEqual(10, exercises.ReturnArrayOfUnknownSize(10).Length, "Is your array size set using the parameter passed in?");
+            Assert.AreEqual(100, exercises.ReturnArrayOfUnknownSize(100).Length, "Is your array size set using the parameter passed in?");
+        }
+
+        [TestMethod]
+        public void Test_02a_ReturnFirstElement()
+        {
+            Assert.AreEqual(80, exercises.ReturnFirstElement(), "That's not the first element in that array");
+        }        
+
+        [TestMethod]
+        public void Test_03_ReturnLastElement()
+        {
+            Assert.AreEqual(443, exercises.ReturnLastElement(), "That's not the last element");
+        }
+
+        [TestMethod]
+        public void Test_04a_ReturnFirstElementOfParam()
+        {
+            Assert.AreEqual(5, exercises.ReturnFirstElementOfParam(new int[] { 5, 10, 15 }), "That's not the first element from {5, 10, 15}");
+            Assert.AreEqual(10, exercises.ReturnFirstElementOfParam(new int[] { 10, 20, 30, 40, 50 }), "That's not the first element from {10, 20, 30, 40, 50}");
+        }
+
+        [TestMethod]
+        public void Test_04b_SetFirstElement()
+        {
+            int[] array = { 3, 5, 7, 9 };
+            exercises.SetFirstElement(array);
+            Assert.AreEqual(100, array[0], "Are you sure that you set the first element in the array to 100?");
+
+            
+        }
+
+        [TestMethod]
+        public void Test_05a_ReturnLastElementOfParam()
+        {
+            Assert.AreEqual(15, exercises.ReturnLastElementOfParam(new int[] { 5, 10, 15 }), "That's not the last element from {5, 10, 15}");
+            Assert.AreEqual(50, exercises.ReturnLastElementOfParam(new int[] { 10, 20, 30, 40, 50 }), "That's not the last element from {10, 20, 30, 40, 50}");
+        }
+
+        [TestMethod]
+        public void Test_05b_ReturnSecondToLastElementOfParam()
+        {
+            Assert.AreEqual(10, exercises.ReturnSecondToLastElementOfParam(new int[] { 5, 10, 15 }), "That's not second from the last element from {5, 10, 15}");
+            Assert.AreEqual(40, exercises.ReturnSecondToLastElementOfParam(new int[] { 10, 20, 30, 40, 50 }), "That's not second from the last element from {10, 20, 30, 40, 50}");
+        }
+
+        [TestMethod]
+        public void Test_05c_SetLastElement()
+        {
+            int[] array = { 3, 5, 7, 9 };
+            exercises.SetLastElement(array);
+            Assert.AreEqual(100, array[3], "Are you sure that you set the last element in the array to 100?");
+
+            array = new int[] { 1, 1, 1 };
+            exercises.SetLastElement(array);
+            Assert.AreEqual(100, array[2], "Are you sure that you set the last element in the array to 100?");
         }
 
 
         [TestMethod]
-        public void Test_02_ReturnNotHalf()
+        public void Test_06_ReturnCounterFromLoop()
         {
-            Assert.AreNotEqual(0.5, exercises.ReturnNotHalf(), 0.001, "Value returned shouldn't be 0.5");
+            Assert.AreEqual(18, exercises.ReturnSumArray(), "Are you sure you added correctly?");
         }
 
         [TestMethod]
-        public void Test_03_ReturnName()
+        public void Test_07_ReturnCorrectSum()
         {
-            Assert.IsNotNull(exercises.ReturnName(), "Value returned should be your name");
+            Assert.AreEqual(18, exercises.ReturnCorrectSum(new int[] { 2, 0, 7, 9 }), "Are you sure all of the numbers are getting added?");
         }
 
         [TestMethod]
-        public void Test_04_ReturnDoubleOfTwo()
+        public void Test_08_ReturnCorrectSumAgain()
         {
-            Assert.IsTrue(exercises.ReturnDoubleOfTwo().GetType() == typeof(double), "Value returned should be a double");
-            Assert.AreEqual(2.0, exercises.ReturnDoubleOfTwo(), 0, "Value returned should still equal two");
+            Assert.AreEqual(18, exercises.ReturnCorrectSumAgain(new int[] { 2, 0, 7, 9 }), "Are you sure all of the numbers are getting added?");
         }
 
         [TestMethod]
-        public void Test_05_ReturnNameOfLanguage()
+        public void Test_09_ReturnSumEveryOtherNumber()
         {
-            Assert.AreEqual("C#", exercises.ReturnNameOfLanguage(), "Value should equal the name of the programming language you're learning");
+            Assert.AreEqual(12, exercises.ReturnSumEveryOtherNumber(new int[] { 4, 3, 4, 1, 4, 6 }), "4 + 4 + 4 should add up to 12.");
         }
 
         [TestMethod]
-        public void Test_06_ReturnTrueFromIf()
+        public void Test_10_ReturnHighestNumber()
         {
-            Assert.IsTrue(exercises.ReturnTrueFromIf(), "If statement should return true");
+            Assert.AreEqual(13, exercises.FindTheHighestNumber(new int[] { 3, 12, 11, 13, 2, 4 }), "13 is the highest number in { 3, 12, 11, 13, 2, 4 }");
+            Assert.AreEqual(103, exercises.FindTheHighestNumber(new int[] { 23, 12, 51, 103, 12, 4 }), "103 is the highest number in { 23, 12, 51, 103, 12, 4 }");
+
         }
-
-        [TestMethod]
-        public void Test_07_ReturnTrueWhenOneEqualsOne()
-        {
-            Assert.IsTrue(exercises.ReturnTrueWhenOneEqualsOne(), "If statement should return true");
-        }
-
-        [TestMethod]
-        public void Test_08_ReturnTrueWhenGreaterThanFive()
-        {
-            Assert.IsTrue(exercises.ReturnTrueWhenGreaterThanFive(6), "We should return true when parameter is greater than five");
-            Assert.IsFalse(exercises.ReturnTrueWhenGreaterThanFive(5), "We should return false when parameter is five");
-            Assert.IsFalse(exercises.ReturnTrueWhenGreaterThanFive(4), "We should return false when parameter is smaller than five");
-        }
-
-        [TestMethod]
-        public void Test_09_ReturnTrueWhenGreaterThanFiveInOneLine()
-        {
-            Assert.IsTrue(exercises.ReturnTrueWhenGreaterThanFiveInOneLine(6), "We should return true when parameter is greater than five");
-            Assert.IsFalse(exercises.ReturnTrueWhenGreaterThanFiveInOneLine(5), "We should return false when parameter is five");
-            Assert.IsFalse(exercises.ReturnTrueWhenGreaterThanFiveInOneLine(4), "We should return false when parameter is smaller than five");
-        }
-
-        [TestMethod]
-        public void Test_10_ReturnNumberAfterAddThreeAndAddFive()
-        {
-            Assert.AreEqual(9, exercises.ReturnNumberAfterAddThreeAndAddFive(1, true, true), "We should add three and five when both are true");
-            Assert.AreEqual(4, exercises.ReturnNumberAfterAddThreeAndAddFive(1, true, false), "We should add three when passed true false");
-            Assert.AreEqual(6, exercises.ReturnNumberAfterAddThreeAndAddFive(1, false, true), "We should add five when passed false true");
-            Assert.AreEqual(1, exercises.ReturnNumberAfterAddThreeAndAddFive(1, false, false), "We should return the original number when both are false");
-        }
-
-
-
-        [TestMethod]
-        public void Test_11_ReturnFizzIfThree()
-        {
-            Assert.AreEqual("Fizz", exercises.ReturnFizzIfThree(3));
-            Assert.AreEqual("", exercises.ReturnFizzIfThree(6));
-        }
-
-        [TestMethod]
-        public void Test_12_ReturnFizzIfThreeUsingTernary()
-        {
-            Assert.AreEqual("Fizz", exercises.ReturnFizzIfThreeUsingTernary(3));
-            Assert.AreEqual("", exercises.ReturnFizzIfThreeUsingTernary(6));
-        }
-
-        [TestMethod]
-        public void Test_13_ReturnFizzOrBuzzOrNothing()
-        {
-            Assert.AreEqual("Fizz", exercises.ReturnFizzOrBuzzOrNothing(3));
-            Assert.AreEqual("Buzz", exercises.ReturnFizzOrBuzzOrNothing(5));
-            Assert.AreEqual("", exercises.ReturnFizzOrBuzzOrNothing(15));
-        }
-
-        [TestMethod]
-        public void Test_14_ReturnAdultOrMinor()
-        {
-            Assert.AreEqual("Adult", exercises.ReturnAdultOrMinor(20));
-            Assert.AreEqual("Adult", exercises.ReturnAdultOrMinor(18));
-            Assert.AreEqual("Minor", exercises.ReturnAdultOrMinor(17));
-        }
-
-        [TestMethod]
-        public void Test_15_ReturnAdultOrMinorAgain()
-        {
-            Assert.AreEqual("Adult", exercises.ReturnAdultOrMinorAgain(20));
-            Assert.AreEqual("Adult", exercises.ReturnAdultOrMinorAgain(18));
-            Assert.AreEqual("Minor", exercises.ReturnAdultOrMinorAgain(17));
-        }
-
-        [TestMethod]
-        public void Test_16_ReturnBigEvenNumber()
-        {
-            Assert.AreEqual("Big Even Number", exercises.ReturnBigEvenNumber(110), "Number is 110. It is even, a multiple of 5, and greater than 100. It should be \"Big Even Number\"");
-            Assert.AreEqual("Big Number", exercises.ReturnBigEvenNumber(101), "Number is 101. It is not even, nor is it a multiple of 5. It should be \"Big Number\".");
-            Assert.AreEqual("", exercises.ReturnBigEvenNumber(100), "Number is 100. It is equal to but not larger than 100, it should be \"\".");
-            Assert.AreEqual("Big Number", exercises.ReturnBigEvenNumber(102), "Number is 102. It is larger than 100 and even, but not a multiple of 5. It should be \"Big Number\".");
-            Assert.AreEqual("", exercises.ReturnBigEvenNumber(99), "Number is 99, it should be \"\"");
-        }
-
-
     }
 }

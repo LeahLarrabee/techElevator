@@ -1,163 +1,158 @@
 package com.techelevator;
 
 public class Lecture {
-    /*
-    1. This method is named returnNotOne and it returns an int. Change
-    it so that it returns something other than a 1.
-    */
-    public int returnNotOne() {
-        return 1;
-    }
 
     /*
-    2. This method is named returnNotHalf and it returns a double. Change
-    it so that it returns something other than a 0.5.
+    1. Return the created array
     */
-    public double returnNotHalf() {
-        return 0.5;
-    }
-
-    /*
-    3. This method needs to return a String. Fix it to return a valid String.
-    */
-    public String returnName() {
+    public int[] returnArray() {
+        int[] array = { 80, 8080, 443 };
         return null;
     }
 
     /*
-    4. This method currently returns an int. Change it so that it returns a double.
+    2. Return the first element of the array
     */
-    public int returnDoubleOfTwo() {
-        return 2;
+    public int returnFirstElement() {
+        int[] portNumbers = { 80, 8080, 443 };
+        return 1;
     }
 
     /*
-    5. This method should return the language that you're learning. Change
-    it so that it does that.
+    3. Return the last element of the array
     */
-    public boolean returnNameOfLanguage() {
-        return false;
+    public int returnLastElement() {
+        int[] portNumbers = { 80, 8080, 443 };
+        return 1;
     }
 
     /*
-    6. This method uses an if statement to define what to return. Have it
-    return true if the if statement passes.
+    4. Return the first element of the array from the parameters
     */
-    public boolean returnTrueFromIf() {
-        if (true) {
-            return false;
+    public int returnFirstElementOfParam(int[] passedInArray) {
+        return 1;
+    }
+
+    /*
+    5. Return the last element of the array from the parameters
+    */
+    public int returnLastElementOfParam(int[] passedInArray) {
+        return 1;
+    }
+
+    /*
+    6. Here, a variable is defined within a block. How can we get the value of that outside of the block in order to
+       return it? There are a couple of different ways of doing this, what can you come up with?
+    */
+    public int returnVariableFromBlock(int number) {
+
+        { // A new block with scoped variables
+
+            int result = number * 5;
+
+        } // the result variable disappears here
+
+        return number; // We want to return result here. How?
+    }
+
+    /*
+    7. What will the variable result be at the end of the method? Change the number in the logic expression so that
+       it returns true.
+    */
+    public boolean returnOperationInBlock() {
+        int result = 5;
+
+        {
+            int multiplier = 10;
+            result *= multiplier;
         }
 
-        return false;
+        return result == 1; // <-- Change the number to match result and make this be true
     }
 
     /*
-    7. This method uses an if to check to make sure that one is equal
-    to one. Make sure it returns true when one equals one.
+    8. Return the only variable that is in scope at the return statement.
     */
-    public boolean returnTrueWhenOneEqualsOne() {
-        if (1 == 1) {
-            return false;
+    public double returnInScopeVariable() {
+        double one = 1.0;
+        {
+            double three = 3.0;
+            one += three;
+            {
+                double four = 4.0;
+                three = four - one;
+                one++;
+            }
+
+            double five = 5.0;
+            double eight = five + three;
         }
 
-        return false;
+        return 0;
     }
 
     /*
-    8. This method checks a parameter passed to the method to see if it's
-    greater than 5 and returns true if it is.
+    9. How many times do we go through this loop? Change the number in the logic expression so that it returns true.
     */
-    public boolean returnTrueWhenGreaterThanFive(int number) {
-        if (number > 5) {
+    public boolean returnCounterFromLoop() {
 
-        } else {
+        int[] arrayToLoopThrough = { 3, 4, 2, 9 };
 
-        }
-        return false;
-    }
+        int counter = 0; // Must be started outside the block so that have access to it after the block
 
-    /*
-    9. If you think about it, we really don't need the if statement above.
-    How can we rewrite exercise 8 to have only one line of code?
-    */
-    public boolean returnTrueWhenGreaterThanFiveInOneLine(int number) {
-        return false; // What can we put here that returns a boolean that we want?
-    }
-
-    /*
-    10. This method will take a number and do the following things to it:
-    * If addThree is true, we'll add three to that number
-    * If addFive is true, we'll add five to that number
-    * We'll then return the result
-    */
-    public int returnNumberAfterAddThreeAndAddFive(int number, boolean addThree, boolean addFive) {
-        if (addThree) {
-            number = number + 1;
+        for (int i = 0; i < arrayToLoopThrough.length; i++) {
+            counter++;
         }
 
-        // We can't use an else here. They could both be true, so we have to check each one.
+        return counter == 1; // What should the number be to return true?
+    }
 
-        if (addFive) {
-            number += 1;
+    /*
+    10. This loop is counting incorrectly. What needs to change in the loop for it to count properly?
+    */
+    public boolean returnCorrectCount() {
+        int[] arrayToLoopThrough = { 4, 23, 9 };
+
+        int counter = 0;
+
+        //     Start;       Keep going while         Increment by one;
+        for (int i = 1; i < arrayToLoopThrough.length; i++) {
+            counter += 1;
         }
 
-        return number;
+        return counter == 3;
     }
 
     /*
-    11. Write an if statement that returns "Fizz" if the parameter is 3 and returns an empty String for anything else.
+    11. This loop is counting incorrectly. What needs to change in the loop for it to count properly?
     */
-    public String returnFizzIfThree(int number) {
-        return "";
-    }
+    public boolean returnCountCorrectTimes() {
+        int[] arrayToLoopThrough = { 4, 23, 9, 4, 33 };
 
-    /*
-    12. Now write the above using the Ternary operator ?:. If you're not sure what this is, you can Google it.
-    */
-    public String returnFizzIfThreeUsingTernary(int number) {
-        return "";
-    }
+        int counter = 0;
 
-    /*
-    13. Write an if/else statement that returns "Fizz" if the parameter is 3, "Buzz" if the parameter is 5 and an empty String for anything else.
-    */
-    public String returnFizzOrBuzzOrNothing(int number) {
-        return "";
-    }
-
-    /*
-    14. Write an if statement that checks if the parameter number is either equal to or greater than 18. Return "Adult" if it is or "Minor" if it's not.
-    */
-    public String returnAdultOrMinor(int number) {
-        if (true) {
-            return "Adult";
-        } else {
-            return "Minor";
+        //     Start;       Keep going while         Increment by one;
+        for (int i = 0; i <= arrayToLoopThrough.length; i++) {
+            counter = counter + 1;
         }
+
+        return counter == 5;
     }
 
     /*
-    15. Now, do it again with a different boolean opeation.
+    12. We want this loop to only count every other item starting at zero. What needs to change in the loop for
+        it to do that?
     */
-    public String returnAdultOrMinorAgain(int number) {
-        if (true) {
-            return "Adult";
-        } else {
-            return "Minor";
-        }
-    }
+    public boolean returnSumEveryOtherNumber() {
+        int[] arrayToLoopThrough = { 4, 3, 4, 1, 4, 6 };
 
-    /*
-    16. Return as above, but also return "Teen" if the number is between 13 and 17 inclusive.
-    */
-    public String returnAdultOrMinorOrTeen(int number) {
-        if (true) {
-            return "Adult";
-        } else if (true) {
-            return "Teen";
-        } else {
-            return "Minor";
-        }
-    }
+        int sum = 0;
 
+        //     Start;       Keep going while       Increment by;
+        for (int i = 0; i < arrayToLoopThrough.length; i = i + 1) {
+            sum = sum + arrayToLoopThrough[i];
+        }
+
+        return sum == 12;
+    }
 }

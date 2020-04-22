@@ -1,197 +1,158 @@
 package com.techelevator;
 
 public class Lecture {
-	/*
-	 * 1. This method is named returnNotOne and it returns an int. Change it so that
-	 * it returns something other than a 1.
-	 */
-	public int returnNotOne() {
-		return 2;
-	}
 
-	/*
-	 * 2. This method is named returnNotHalf and it returns a double. Change it so
-	 * that it returns something other than a 0.5.
-	 */
-	public double returnNotHalf() {
-		return 1.5;
-	}
+    /*
+    1. Return the created array
+    */
+    public int[] returnArray() {
+        int[] example = { 80, 8080, 443 };
+        return example;
+    }
 
-	/*
-	 * 3. This method needs to return a String. Fix it to return a valid String.
-	 */
-	public String returnName() {
-		return "I am a valid String";
-	}
+    /*
+    2. Return the first element of the array
+    */
+    public int returnFirstElement() {
+        int[] portNumbers = { 80, 8080, 443 };
+        return portNumbers[0];
+    }
 
-	/*
-	 * 4. This method currently returns an int. Change it so that it returns a
-	 * double.
-	 */
-	public double returnDoubleOfTwo() {
-		return 2.0;
-	}
+    /*
+    3. Return the last element of the array
+    */
+    public int returnLastElement() {
+        int[] portNumbers = { 80, 8080, 443 };
+        return portNumbers[2];
+    }
 
-	/*
-	 * 5. This method should return the language that you're learning. Change it so
-	 * that it does that.
-	 */
-	public String returnNameOfLanguage() {
-		return "Java";
-	}
+    /*
+    4. Return the first element of the array from the parameters
+    */
+    public int returnFirstElementOfParam(int[] passedInArray) {
+        return passedInArray[0];
+    }
 
-	/*
-	 * 6. This method uses an if statement to define what to return. Have it return
-	 * true if the if statement passes.
-	 */
-	public boolean returnTrueFromIf() {
+    /*
+    5. Return the last element of the array from the parameters
+    */
+    public int returnLastElementOfParam(int[] passedInArray) {
+        return passedInArray[passedInArray.length - 1];
+    }
 
-		boolean result = false;
+    /*
+    6. Here, a variable is defined within a block. How can we get the value of that outside of the block in order to
+       return it? There are a couple of different ways of doing this, what can you come up with?
+    */
+    public int returnVariableFromBlock(int number) {
 
-		if (true) {
-			result = true;
-		}
+    	int result;
+    	
+        {
+            result = number * 5;
+        }
 
-		return result;
-	}
+        return result;
+    }
+    
+    /*
+    7. What will the variable result be at the end of the method? Change the number in the logic expression so that
+       it returns true.
+    */
+    public boolean returnOperationInBlock() {
+        int result = 5;
 
-	/*
-	 * 7. This method uses an if to check to make sure that one is equal to one.
-	 * Make sure it returns true when one equals one.
-	 */
-	public boolean returnTrueWhenOneEqualsOne() {
+        {
+            int multiplier = 10;
+            result *= multiplier;
+        }
 
-		boolean result = false;
+        return result == 50;
+    }
 
-		if (1 == 1) {
-			result = true;
-		}
+    /*
+    8. Return the only variable that is in scope at the return statement.
+    */
+    public double returnInScopeVariable() {
+        double one = 1.0;
+        {
+            double three = 3.0;
+            one += three;
+            {
+                double four = 4.0;
+                three = four - one;
+                one++;
+            }
 
-		return result;
-	}
+            double five = 5.0;
+            double eight = five + three;
+        }
 
-	/*
-	 * 8. This method checks a parameter passed to the method to see if it's greater
-	 * than 5 and returns true if it is.
-	 */
-	public boolean returnTrueWhenGreaterThanFive(int number) {
+        return one;
+    }
 
-		boolean result = false;
+    /*
+    9. How many times do we go through this loop? Change the number in the logic expression so that it returns true.
+    */
+    public boolean returnCounterFromLoop() {
 
-		if (number > 5) {
-			result = true;
-		}
+        int[] arrayToLoopThrough = { 3, 4, 2, 9 };
 
-		return result;
-	}
+        int counter = 0; // Must be started outside the block so that have access to it after the block
 
-	/*
-	 * 9. If you think about it, we really don't need the if statement above. How
-	 * can we rewrite exercise 8 to have only one line of code?
-	 */
-	public boolean returnTrueWhenGreaterThanFiveInOneLine(int number) {
-		return number > 5;
-	}
+        for (int i = 0; i < arrayToLoopThrough.length; i++) {
+            counter++;
+        }
 
-	/*
-	 * 10. This method will take a number and do the following things to it: If
-	 * addThree is true, we'll add three to that number If addFive is true, we'll
-	 * add five to that number We'll then return the result
-	 */
-	public int returnNumberAfterAddThreeAndAddFive(int number, boolean addThree, boolean addFive) {
-		if (addThree) {
-			number = number + 3;
-		}
+        return counter == 4;
+    }
 
-		// We can't use an else here. They could both be true, so we have to check each
-		// one.
+    /*
+    10. This loop is counting incorrectly. What needs to change in the loop for it to count properly?
+    */
+    public boolean returnCorrectCount() {
+        int[] arrayToLoopThrough = { 4, 23, 9 };
 
-		if (addFive) {
-			number += 5;
-		}
+        int counter = 0;
 
-		return number;
-	}
+        //     Start;       Keep going while         Increment by one;
+        for (int i = 0; i < arrayToLoopThrough.length; i++) {
+            counter += 1;
+        }
 
-	/*
-	 * 11. Write an if statement that returns "Fizz" if the parameter is 3 and
-	 * returns an empty String for anything else.
-	 */
-	public String returnFizzIfThree(int number) {
-		String result = "";
+        return counter == 3;
+    }
 
-		if (number == 3) {
-			result = "Fizz";
-		}
+    /*
+    11. This loop is counting incorrectly. What needs to change in the loop for it to count properly?
+    */
+    public boolean returnCountCorrectTimes() {
+        int[] arrayToLoopThrough = { 4, 23, 9, 4, 33 };
 
-		return result;
-	}
+        int counter = 0;
 
-	/*
-	 * 12. Now write the above using the Ternary operator ?:. If you're not sure
-	 * what this is, you can Google it.
-	 */
-	public String returnFizzIfThreeUsingTernary(int number) {
-		return (number == 3) ? "Fizz" : "";
-	}
+        //     Start;       Keep going while         Increment by one;
+        for (int i = 0; i < arrayToLoopThrough.length; i++) {
+            counter = counter + 1;
+        }
 
-	/*
-	 * 13. Write an if/else statement that returns "Fizz" if the parameter is 3,
-	 * "Buzz" if the parameter is 5 and an empty String for anything else.
-	 */
-	public String returnFizzOrBuzzOrNothing(int number) {
-		String result = "";
+        return counter == 5;
+    }
 
-		if (number == 3) {
-			result = "Fizz";
-		} else if (number == 5) {
-			result = "Buzz";
-		}
+    /*
+    12. We want this loop to only count every other item starting at zero. What needs to change in the loop for
+        it to do that?
+    */
+    public boolean returnSumEveryOtherNumber() {
+        int[] arrayToLoopThrough = { 4, 3, 4, 1, 4, 6 };
 
-		return result;
-	}
+        int sum = 0;
 
-	/*
-	 * 14. Write an if statement that checks if the parameter number is either equal
-	 * to or greater than 18. Return "Adult" if it is or "Minor" if it's not.
-	 */
-	public String returnAdultOrMinor(int number) {
-		String result = "Minor";
+        //     Start;       Keep going while       Increment by;
+        for (int i = 0; i < arrayToLoopThrough.length; i = i + 2) {
+            sum = sum + arrayToLoopThrough[i];
+        }
 
-		if (number >= 18) {
-			result = "Adult";
-		}
-
-		return result;
-	}
-
-	/*
-	 * 15. Now, do it again with a different boolean operation.
-	 */
-	public String returnAdultOrMinorAgain(int number) {
-		String result = "Adult";
-
-		if (number <= 17) {
-			result = "Minor";
-		}
-
-		return result;
-	}
-
-	/*
-	 * 16. Return as above, but also return "Teen" if the number is between 13 and
-	 * 17 inclusive.
-	 */
-	public String returnAdultOrMinorOrTeen(int number) {
-		String result = "Minor";
-
-		if (number > 17) {
-			result = "Adult";
-		} else if (number >= 13) {
-			result = "Teen";
-		}
-
-		return result;
-	}
-
+        return sum == 12;
+    }
 }
