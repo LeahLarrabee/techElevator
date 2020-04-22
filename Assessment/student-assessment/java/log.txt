@@ -1,0 +1,5 @@
+2020-02-23T15:45:58.448538-Car - 1965-Ford MustangisClassic: true
+2020-02-23T15:45:58.450532500-Car - 2019-SubaruisClassic: false
+2020-02-23T15:45:58.450532500-Car - 1920-Baker ElectricisClassic: true
+2020-02-23T15:45:58.450532500-Car - 1970-Pontiac GTOisClassic: true
+2020-02-23T15:45:58.451588200-Car - 2018-Toyota CamryisClassic: false
