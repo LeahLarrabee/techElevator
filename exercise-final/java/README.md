@@ -1,41 +1,100 @@
-# Loops and Arrays
+# MVC Views Part 1 Exercises
 
-This exercise is comprised of various problems that will give you the opportunity to practice what you have learned related to loops and arrays.
+## 1. FizzBuzz
 
-## Learning Objectives
+Modify the `fizzBuzz.jsp` page. The format for the URL is `http://localhost:8080/mvc-views-part1-exercises/fizzBuzz.jsp?number=20`. The number to go up to is available via the `${ param.number }` variable.
 
-After completing this exercise, students will understand:
+Create an unordered list with the id `fizzbuzz` that contains a list of numbers from 1 up to and including the number. However, the number should be replaced given the following rules:
 
-* How to iterate (loop through) arrays to solve complex problems.
-* How to access items in an array with an index.
-* How to create arrays.
-* How to use loops to execute blocks of code multiple times.
+- If the number is divisible by 3, show "Fizz!" and apply the `fizz` class to the element.
 
-## Evaluation Criteria & Functional Requirements
+- If the number is divisible by 5, show "Buzz!" and apply the `buzz` class to the element.
 
-* The project must not have any build errors.
-* Unit tests pass as expected.
-* Appropriate variable names and data types are being used.
-* Code is presented in a clean, organized format.
-* Loops and arrays are being used appropriately.
+- If the number is divisible by both 3 and 5, show "FizzBuzz!" and apply the class `fizzbuzz` to the element.
 
-## Getting started
+For instance, given the number 20, the expected output should be:
 
-* Import the loops-arrays-exercises project into Eclipse.
-* Right-click on the project, and select the **Run As -> JUnit Test** menu option.
-* Click on the **JUnit** tab to see the results of your tests and which passed / failed.
-* Provide enough code to get a test passing.
-* Repeat until all tests are passing.
+```html
+<ul id="fizzbuzz">
+  <li>1</li>
+  <li>2</li>
+  <li class="fizz">Fizz!</li>
+  <li>4</li>
+  <li class="buzz">Buzz!</li>
+  <li class="fizz">Fizz!</li>
+  <li>7</li>
+  <li>8</li>
+  <li class="fizz">Fizz!</li>
+  <li class="buzz">Buzz!</li>
+  <li>11</li>
+  <li class="fizz">Fizz!</li>
+  <li>13</li>
+  <li>14</li>
+  <li class="fizzbuzz">FizzBuzz!</li>
+  <li>16</li>
+  <li>17</li>
+  <li class="fizz">Fizz!</li>
+  <li>19</li>
+  <li class="buzz">Buzz!</li>
+</ul>
+```
 
-## Tips and Tricks
+![Example](resources/fizzbuzz.png)
 
-* **Note, If you find yourself stuck on a problem for longer than fifteen minutes, move onto the next, and try again later.**
-* Before each method, there is a description of the problem that needs to be solved, as well as examples with expected output. Use these examples to get an idea of the values you need to write your code around. For example, in the comments above the `sum2` method, there is a section that includes the method name, as well as the expected value that will be returned for each method call. The following example signifies that when the method is called with `[1, 2, 3]`, it will return 3, when it is called with `[1, 1]`, it will return 2, and when it is called with `[1, 1, 1, 1]`, it will return 2:
-    ```
-    sum2([1, 2, 3]) → 3
-    sum2([1, 1]) → 2
-    sum2([1, 1, 1, 1]) → 2
-    ```
-* When you are trying to solve these sorts of problems, it is often helpful to keep track of the state of variables on a piece of paper as you are working through your code.
-* The output of the test run can provide helpful clues as to why the tests are failing. Try reading the output of a failing test for more information that could be valuable when troubleshooting.
-* You can also run the tests in debug mode when executing the tests. This will allow you to set a "breakpoint", which will then halt the code at certain points in the editor. You can then look at the values of variables while the test is executing, and can also see what code is currently being executed. Don't hesitate to use the debugging capabilities in Visual Studio to help resolve issues.
+## 2. Fibonacci
+
+Modify the `fibonacci.jsp` page that displays the numbers of the Fibonacci sequence up to N, where N is the value of `max`. The format for the URL is: `http://localhost:8080/mvc-views-part1-exercises/fibonacci.jsp?max=20`. The number to go up to is available via the `${ param.max }` variable.
+
+Create an unordered list with the id `fibonacci` that contains list item elements for each of the numbers in the sequence up to the max number specified in the URL.
+
+For instance, if the value for `max` is 50, the expected output should be:
+
+```html
+<ul id="fibonacci">
+  <li>1</li>
+  <li>2</li>
+  <li>3</li>
+  <li>5</li>
+  <li>8</li>
+  <li>13</li>
+  <li>21</li>
+  <li>34</li>
+</ul>
+```
+
+![Example](resources/fibonacci.png)
+
+## 3. Echo
+
+Modify the `echo.jsp` page that displays a repeated word N number of times with decreasing font until it is no longer visible. The format for the URL is: `http://localhost:8080/mvc-views-part1-exercises/echo.jsp?word=Hello!&count=20`. The word and number of times to display are available via the `${ param.word }` and `${ param.count }` variables.
+
+Create an unordered list that contains a list of items with the value of the `word` parameter repeated the number of times specified by the `count` parameter. Also, the font size of the first list item should be equal to `count`, and the font size of each subsequent list item should be decreased by 1.
+
+For instance, given the parameter `word` with a value of "Hello!" and the parameter `count` with a value of 20, the expected output would be:
+
+```html
+<ul>
+  <li style="font-size: 20px;">Hello!</li>
+  <li style="font-size: 19px;">Hello!</li>
+  <li style="font-size: 18px;">Hello!</li>
+  <li style="font-size: 17px;">Hello!</li>
+  <li style="font-size: 16px;">Hello!</li>
+  <li style="font-size: 15px;">Hello!</li>
+  <li style="font-size: 14px;">Hello!</li>
+  <li style="font-size: 13px;">Hello!</li>
+  <li style="font-size: 12px;">Hello!</li>
+  <li style="font-size: 11px;">Hello!</li>
+  <li style="font-size: 10px;">Hello!</li>
+  <li style="font-size: 9px;">Hello!</li>
+  <li style="font-size: 8px;">Hello!</li>
+  <li style="font-size: 7px;">Hello!</li>
+  <li style="font-size: 6px;">Hello!</li>
+  <li style="font-size: 5px;">Hello!</li>
+  <li style="font-size: 4px;">Hello!</li>
+  <li style="font-size: 3px;">Hello!</li>
+  <li style="font-size: 2px;">Hello!</li>
+  <li style="font-size: 1px;">Hello!</li>
+</ul>
+```
+
+![Example](resources/echo.png)
