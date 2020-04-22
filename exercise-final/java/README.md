@@ -1,100 +1,116 @@
-# MVC Views Part 1 Exercises
+# MVC Views - Part 2 (Day 1)
 
-## 1. FizzBuzz
+The purpose of this exercise is to provide you the opportunity to practice using complex data that is provided from a "controller" in your views. 
 
-Modify the `fizzBuzz.jsp` page. The format for the URL is `http://localhost:8080/mvc-views-part1-exercises/fizzBuzz.jsp?number=20`. The number to go up to is available via the `${ param.number }` variable.
+## Learning Objectives
 
-Create an unordered list with the id `fizzbuzz` that contains a list of numbers from 1 up to and including the number. However, the number should be replaced given the following rules:
+After completing this exercise, students will understand:
 
-- If the number is divisible by 3, show "Fizz!" and apply the `fizz` class to the element.
+- How to effectively present complex model data on a view.
+- How to use JSTL conditional statements (if/else) to show/hide HTML and CSS classes on views.
+- How to use JSTL loops to generate HTML dynamically.
 
-- If the number is divisible by 5, show "Buzz!" and apply the `buzz` class to the element.
+## Evaluation Criteria and Functional Requirements
 
-- If the number is divisible by both 3 and 5, show "FizzBuzz!" and apply the class `fizzbuzz` to the element.
+- The project must not have any build errors.
+- Code is presented in a clean, organized format.
+- The code meets the specifications defined below.
 
-For instance, given the number 20, the expected output should be:
+Often when working on a software development team, you're given a slice of the work to complete. For instance, there are times when you're tasked with creating code for the views, while another developer is tasked with working on controllers or DAOs.
 
-```html
-<ul id="fizzbuzz">
-  <li>1</li>
-  <li>2</li>
-  <li class="fizz">Fizz!</li>
-  <li>4</li>
-  <li class="buzz">Buzz!</li>
-  <li class="fizz">Fizz!</li>
-  <li>7</li>
-  <li>8</li>
-  <li class="fizz">Fizz!</li>
-  <li class="buzz">Buzz!</li>
-  <li>11</li>
-  <li class="fizz">Fizz!</li>
-  <li>13</li>
-  <li>14</li>
-  <li class="fizzbuzz">FizzBuzz!</li>
-  <li>16</li>
-  <li>17</li>
-  <li class="fizz">Fizz!</li>
-  <li>19</li>
-  <li class="buzz">Buzz!</li>
-</ul>
-```
+In this exercise, you've been given three views that work with a `Product` model. These views have the following responsibilities:
 
-![Example](resources/fizzbuzz.png)
+- WEB-INF/jsp/productList.jsp
 
-## 2. Fibonacci
+  - This view displays a list of products.
+  - `http://localhost:xxxxx/products/`
 
-Modify the `fibonacci.jsp` page that displays the numbers of the Fibonacci sequence up to N, where N is the value of `max`. The format for the URL is: `http://localhost:8080/mvc-views-part1-exercises/fibonacci.jsp?max=20`. The number to go up to is available via the `${ param.max }` variable.
+- WEB-INF/jsp/productTiles.jsp
 
-Create an unordered list with the id `fibonacci` that contains list item elements for each of the numbers in the sequence up to the max number specified in the URL.
+  - This view displays a grid view of products.
+  - `http://localhost:xxxxx/products/tiles`
 
-For instance, if the value for `max` is 50, the expected output should be:
+- WEB-INF/jsp/productDetail.jsp
 
-```html
-<ul id="fibonacci">
-  <li>1</li>
-  <li>2</li>
-  <li>3</li>
-  <li>5</li>
-  <li>8</li>
-  <li>13</li>
-  <li>21</li>
-  <li>34</li>
-</ul>
-```
+  - This view displays the details for a specific product.
+  - `http://localhost:xxxxx/products/detail?id=1`
 
-![Example](resources/fibonacci.png)
+Each of these views already contains template HTML, as well as comments in the code to direct you through the work that needs to be completed. Your job is to replace the HTML with JSTL code to dynamically build the view with the data provided.
 
-## 3. Echo
+Additionally, you need to create dynamic URLs in the views. For instance, when you click on a product image, you'll go to the details page specific to that product.
 
-Modify the `echo.jsp` page that displays a repeated word N number of times with decreasing font until it is no longer visible. The format for the URL is: `http://localhost:8080/mvc-views-part1-exercises/echo.jsp?word=Hello!&count=20`. The word and number of times to display are available via the `${ param.word }` and `${ param.count }` variables.
+The controllers, DAOs, database, CSS, and routes have already been created for you. Your work is isolated to implementing JSTL syntax in the views.
 
-Create an unordered list that contains a list of items with the value of the `word` parameter repeated the number of times specified by the `count` parameter. Also, the font size of the first list item should be equal to `count`, and the font size of each subsequent list item should be decreased by 1.
+### Example Layouts
 
-For instance, given the parameter `word` with a value of "Hello!" and the parameter `count` with a value of 20, the expected output would be:
+#### List View
 
-```html
-<ul>
-  <li style="font-size: 20px;">Hello!</li>
-  <li style="font-size: 19px;">Hello!</li>
-  <li style="font-size: 18px;">Hello!</li>
-  <li style="font-size: 17px;">Hello!</li>
-  <li style="font-size: 16px;">Hello!</li>
-  <li style="font-size: 15px;">Hello!</li>
-  <li style="font-size: 14px;">Hello!</li>
-  <li style="font-size: 13px;">Hello!</li>
-  <li style="font-size: 12px;">Hello!</li>
-  <li style="font-size: 11px;">Hello!</li>
-  <li style="font-size: 10px;">Hello!</li>
-  <li style="font-size: 9px;">Hello!</li>
-  <li style="font-size: 8px;">Hello!</li>
-  <li style="font-size: 7px;">Hello!</li>
-  <li style="font-size: 6px;">Hello!</li>
-  <li style="font-size: 5px;">Hello!</li>
-  <li style="font-size: 4px;">Hello!</li>
-  <li style="font-size: 3px;">Hello!</li>
-  <li style="font-size: 2px;">Hello!</li>
-  <li style="font-size: 1px;">Hello!</li>
-</ul>
-```
+![List View](examples/product-list.png)
 
-![Example](resources/echo.png)
+#### Tile View
+
+![Table View](examples/product-tile.png)
+
+#### Detail View
+
+![Detail View](examples/product-detail.png)
+
+Your work will be evaluated on the following:
+
+- The data from the database is displayed appropriately on the page.
+- Monetary data is being displayed in a currency format.
+- The average rating for a product displays the appropriate number of filled-in stars.
+- All five stars are displayed for each rating.
+- Top seller banners are displayed appropriately for top-selling products.
+- Sold out banners are displayed appropriately for products that are sold out.
+- When there are five or fewer products left in the inventory, a message is displayed indicating how many items are left.
+- On the product details page, if a product is not sold out, a button is displayed to add the item to the cart.
+- On the product details page, if a product is sold out, the add to cart button is disabled.
+- Links to the product details page work on the list/tile views. In other words, when a user clicks on a link, they are taken to the corresponding details page for that product.
+- Product images are displayed appropriately.
+- The controller, CSS, and DAOs have NOT been modified.
+- No inline styles are being used in the view.
+- The view is rendered using server-side code—that is, no JavaScript has been added.
+
+**Important**: You'll learn how to generate URLs to filter and sort the data on day two in class. Your exercise on day one should focus on implementing the list and tile views.
+
+## Exercise Instructions: MVC Views Part 2 (Day 1)
+
+1. `cd` into the root of the student-exercise directory. This should be the same directory as this README file.
+2. From the terminal, run the command `createdb -U postgres products`.
+3. From the terminal, run the command `psql -U postgres -d products -f database/products.sql`.
+4. Import the project into Eclipse.
+5. Right-click on the project on the project explorer and click "Run As Web Application."
+6. If the database has been created correctly, you should be able to navigate to one of the URLs specified above without any errors occurring.
+7. The views provided to you are complete, but hard-coded. Your task is to replace the hard-coded HTML with dynamic JSTL/EL. For instance, "Grey Sofa" is replaced with `"${product.name}"`.
+8. Note that `productList.jsp` and `productTiles.jsp` include three versions of the product display for "Grey Sofa": 
+     - The first is the basic product display.
+     - The second incorporates "Top Seller" and running low displays.
+     - The third shows how to display "Sold Out."
+9. Ultimately, the three versions should be consolidated into a single version of the basic product display that incorporates elements from the second and third versions as necessary.
+10. Tackle the exercise in small chunks. For instance, introduce looping through the collection of products passed in by the controller. Next, replace hard-coded values for the product name and price with JSTL/EL, and then handle filling in the correct number of stars based upon the product rating. The views have comments to guide you on what needs to be done. The order is up to you.
+
+# MVC Views - Part 3 (Day 2)
+
+Today's exercises provide an opportunity to gain a better understanding of how data can be passed through query string parameters by creating links.
+
+## Learning Objectives
+
+After completing this exercise, students will understand:
+
+- How to create routes that dynamically update views.
+
+## Evaluation Criteria & Functional Requirements
+
+Your work will be evaluated on the following:
+
+- The views are updated appropriately when filters are selected.
+- Products are sorted appropriately when a sort order is applied.
+- When filtering, the view that was being displayed is updated. For instance, when a user applies filters on the list view, the product list page is updated accordingly. Similarly, when a user applies filters on the tile view, the product tile page is updated accordingly.
+- The controller, CSS, and DAOs have NOT been modified.
+- No inline styles are being used in the view.
+- The view is rendered using server-side code—that is, no JavaScript has been added.
+
+## Exercise Instructions: MVC Views Part 3 (Day 2)
+
+- Changes to `filters.jsp` and `productList.jsp` should be limited.
