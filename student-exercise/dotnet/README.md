@@ -1,44 +1,40 @@
-# Expressions, Statements, Blocks, and Logical Branching
+# Loops and Arrays
 
-This exercise is made up of thirty-five small coding problems. Each problem is independent of the others, and they can be solved in any order. The exercise is intended to reinforce your understanding of expressions, statements, blocks, and logical branching.
+This exercise is comprised of various problems that will give you the opportunity to practice what you have learned related to loops and arrays.
 
 ## Learning Objectives
 
 After completing this exercise, students will understand:
 
-* How to use expressions and statements to solve complex problems.
-* How to apply comparison and logical operators to solve complex problems.
-* How to organize and group statements within blocks.
-* How to choose different paths within code using if/else blocks.
+* How to iterate (loop through) arrays to solve complex problems.
+* How to access items in an array with an index.
+* How to create arrays.
+* How to use loops to execute blocks of code multiple times.
 
 ## Evaluation Criteria & Functional Requirements
 
 * The project must not have any build errors.
 * Unit tests pass as expected.
 * Appropriate variable names and data types are being used.
+* Code is presented in a clean, organized format.
+* Loops and arrays are being used appropriately.
 
-## Getting Started
+## Getting started
 
-* Open the expressions-exercises.sln solution in Visual Studio.
+* Open the loops-arrays-exercises.sln solution in Visual Studio.
 * Click on the **Test -> Run -> All Tests** Menu
-
-![Running Tests](images/Test%20Menu.jpg)
-
 * Click on the **Test Explorer** tab to see the results of your tests and which passed / failed.
-
-![Test Explorer](images/Test%20Explorer.jpg)
-
 * Provide enough code to get a test passing.
 * Repeat until all tests are passing.
 
 ## Tips and Tricks
 
 * **Note, If you find yourself stuck on a problem for longer than fifteen minutes, move onto the next, and try again later.**
-* Before each method, there is a description of the problem that needs to be solved, as well as examples with expected output. Use these examples to get an idea of the values you need to write your code around. For example, in the comments above the `More20` method, there is a section that includes the method name, as well as the expected value that will be returned for each method call. The following example signifies that when the method is called with 20, it will return false, when it is called with 21, it will return true, and when it is called with 22, it will return true:
+* Before each method, there is a description of the problem that needs to be solved, as well as examples with expected output. Use these examples to get an idea of the values you need to write your code around. For example, in the comments above the `Sum2` method, there is a section that includes the method name, as well as the expected value that will be returned for each method call. The following example signifies that when the method is called with `[1, 2, 3]`, it will return 3, when it is called with `[1, 1]`, it will return 2, and when it is called with `[1, 1, 1, 1]`, it will return 2:
     ```
-    More20(20) → false
-    More20(21) → true
-    More20(22) → true
+    Sum2([1, 2, 3]) → 3
+    Sum2([1, 1]) → 2
+    Sum2([1, 1, 1, 1]) → 2
     ```
 * When you are trying to solve these sorts of problems, it is often helpful to keep track of the state of variables on a piece of paper as you are working through your code.
 * The output of the test run can provide helpful clues as to why the tests are failing. Try reading the output of a failing test for more information that could be valuable when troubleshooting.

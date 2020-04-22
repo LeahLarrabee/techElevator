@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Exercises
+namespace loops_arrays_exercises
 {
     class Program
     {
